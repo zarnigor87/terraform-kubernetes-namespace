@@ -7,7 +7,7 @@ resource "kubernetes_namespace" "this" {
 resource "kubernetes_resource_quota" "pod" {
   metadata {
     name = "pod-quota"
-    namespace = kubernetes_namespace.this1.metadata.0.name
+    namespace = kubernetes_namespace.this.metadata.0.name
   }
   spec {
     hard = {
@@ -18,9 +18,5 @@ resource "kubernetes_resource_quota" "pod" {
 }
 
 
-variable number_of_pods {
-  default = 36
-  type = number 
-  description = "The number of pods to create"
-}
+
 
